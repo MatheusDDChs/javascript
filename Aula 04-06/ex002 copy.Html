@@ -10,25 +10,38 @@
            background-color: rgb(231, 221, 240); /*comentário em CSS*/
            color: rgb(0, 0, 0);
            font: normal 20pt Arial;
-       }
-       h1 {color:black}
-       p1 {color: brown;}
+        }
+
+       h1 {
+            color:black
+        }
+
+       p {
+        color: brown;
+        }
     </style>
 </head>
 <body>
    <h1> Olá Mundo!!!</h1> <!--Comentário em HTML-->
-   <p1>Este é o meu primeiro Site</p>
+   <p>Este é o meu primeiro Site</p>
 
     <script>    
-    var n1 = Number(prompt('Qual o primero número? ')) //o prompt mesmo sendo números, ele volta para Strings
-    var n2 = Number(prompt('Qual é o segundo número? '))
+    var n1 = Number(window.prompt('digite um número: ')) //o prompt mesmo sendo números, ele volta para Strings
+    var n2 = Number(window.prompt('digite outro número'))
     var s = n1 + n2
     alert(`a soma entre ${n1} + ${n2} é de ${s} `)
-    //s.lenght é quantos caracteres a string tem 
-    //s.toUpperCase() aumenta todos os caracteres para MAIÚSCULAS
-    //s.toLowerCase() tudo para `minúsculas`
-    // (number + number) adição
-    // (string + string) concatenação 
+
+
+
+
+/*  s.lenght é quantos caracteres a string tem 
+    s.toUpperCase() aumenta todos os caracteres para MAIÚSCULAS
+    s.toLowerCase() tudo para `minúsculas`
+    (number + number) adição
+    (string + string) concatenação 
+    
+    $ = PlaceHolder
+    */
     </script>
 </body>
 </html> 
