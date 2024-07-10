@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testes</title>
+</head>
+<body>
+    <h1>Olá Mundo!!!</h1>
+
+    <button id="butao">Olá mundo!!!</button>
+
+    <script>
+        //Como fazer os usos de Array e Objetos:
+        let araia = [ // array usado para listas e pode ser citado no console conforme exemplo abaixo:
+            "fogueira", "dance", "doces", "coisas"
+        ]
+
+        let didi = { // Obsjetos é para definir elementos dentro de uma variável mas n sei como usar no console
+            aparência: "paia(espinhas)",
+            carisma: 100, 
+            forca: 30,
+            inteligencia: "baixa",
+            potencial: 100000
+        }
+
+        function somar (a, b) {
+            let resultado = a + b
+            return resultado
+        }
+
+        let funcao = (a, b, c) => a + b - c; { //Criando uma função arrow, para executar cálculos com 3 valores básicos.
+            if (funcao >= 5) { //Agora criei um if e else, para criar uma frase quando a "funcao" for maior ou menor de 5
+                console.log("Você realmente conseguiu")
+            } else {
+                console.log("At least your'e trying")
+            }
+        }
+
+        function nome () {window.prompt("Tudo bem?")}
+
+        let botao = document.querySelector("#butao")
+
+        botao.addEventListener("dblclick", () => {
+            nome()
+        })
+
+
+        let x = funcao(1, 8, 7)
+
+        let y = funcao(3,16, 10)
+
+
+        console.log("Este é o resultado: " + funcao(10, 5, 5))
+
+console.log("Este é o resultado de x: " + x)
+console.log("Este é o resultado de y: " + y)
+
+        for (let itens of araia) {
+            console.log("O Didi tem muito disso: " + itens)
+        }
+    </script>
+</body>
+</html>

@@ -1,13 +1,14 @@
 
-// Tipos de variáveis:
-let idade = 18 // Number
+function avisar () {
+    window.alert("Opa disparei!!!")
+}
 
-let nome = "Matheus" // String
+let botao = document.querySelector("#botao")
 
-let logado = false // Boolean
+botao.addEventListener("click", () => {
+    avisar()
+})
 
-let lista = ["farinha", "agua", "fermento", "açucar"]
-
-for (let item of lista) {
-    console.log(item)
+let arco = () => {
+    avisar
 }
