@@ -1,14 +1,11 @@
+let usdInput = document.querySelector("#usd")
 
-function avisar () {
-    window.alert("Opa disparei!!!")
-}
+let brlInput = document.querySelector("#brl")
 
-let botao = document.querySelector("#botao")
-
-botao.addEventListener("click", () => {
-    avisar()
+usdInput.addEventListener("keyup", () => {
+    console.log(usdInput.value)
 })
 
-let arco = () => {
-    avisar
-}
+brlInput.addEventListener("keyup", () => {
+    console.log("Apertou no campo de BRL")
+})

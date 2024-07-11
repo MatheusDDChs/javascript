@@ -25,6 +25,10 @@
             potencial: 100000
         }
 
+        for (let itens of araia) {
+            console.log("O Didi tem muito disso: " + itens)
+        }
+
         function somar (a, b) {
             let resultado = a + b
             return resultado
@@ -38,28 +42,38 @@
             }
         }
 
-        function nome () {window.prompt("Tudo bem?")}
+        function nome () {window.prompt("Tudo bem?")} //Criando função para criar Janela "Prompt" para poder digitar alguma frase ou até número.
 
-        let botao = document.querySelector("#butao")
+        let botao = document.querySelector("#butao") //Selecionando um elemento no HTML, transformando em variável para usar no Java
 
-        botao.addEventListener("dblclick", () => {
+        botao.addEventListener("dblclick", () => { 
             nome()
-        })
+        })//Adicionando um olheiro de eventos para verificar quando tiver algum clique, acionar esta função Arrow
+        /* Eventos conhecidos:
+        Click,
+        DblClick
+        Mouseover
+        Mouseout
+        mousedown: Triggered when a mouse button is pressed down over an element.
+        mouseup
+        keydown
+        keyup
+        load: Triggered when a page or image has finished loading.
+        resize: Triggered when the window is resized.
+        scroll: Triggered when the document is scrolled.
+        */
 
-
-        let x = funcao(1, 8, 7)
+        let x = funcao(1, 8, 7) //Com a função "funcao" agora criei uma variável, com a função e em parenteses os valores que a compõe
 
         let y = funcao(3,16, 10)
 
-
         console.log("Este é o resultado: " + funcao(10, 5, 5))
+        //Com a concatenação básica, fiz para aparecer no console uma frase ou "String" em seguida a função com os valores para somar
 
-console.log("Este é o resultado de x: " + x)
-console.log("Este é o resultado de y: " + y)
+        console.log("Este é o resultado de x: " + x)
+        console.log("Este é o resultado de y: " + y)
 
-        for (let itens of araia) {
-            console.log("O Didi tem muito disso: " + itens)
-        }
+
     </script>
 </body>
 </html>
