@@ -1,14 +1,22 @@
-let dolar = 5.1 //Variável que vamos usar para multiplicar, tem como requerir em outro sistema que atualiza diariamente...
+let dolar = 5.43 //Variável que vamos usar para multiplicar, tem como requerir em outro sistema que atualiza diariamente...
 
 let usdInput = document.querySelector("#usd") //Variável que vai buscar no documento a ID do input do Dolar
 
 let brlInput = document.querySelector("#brl")
 
 usdInput.addEventListener("keyup", () => { //Aqui vai um observador de Keyup, que quando acontecer vai executar a função seguinte.
-    usdInput.value = formatCurrency(usdInput.value)
+    convert("usd-to-brl")
 })
 
 brlInput.addEventListener("keyup", () => {
+    convert("brl-to-usd")
+})
+
+usdInput.addEventListener("blur", () => {
+    usdInput.value = formatCurrency(usdInput.value)
+})
+
+brlInput.addEventListener("blur", () => {
     brlInput.value = formatCurrency(brlInput.value)
 })
 
@@ -26,8 +34,6 @@ function formatCurrency(value) {    //ajustar o valor
     let formatter = new Intl.NumberFormat("pt-BR", options)
     return formatter.format(fixedValue)
 }
-    //utilizar a função de formatar
-    //retornar o valor formatado
 
 
 function fixValue(value) {
@@ -41,14 +47,20 @@ function fixValue(value) {
 
 function convert(type) {
     if (type=="usd-to-brl") {
-        //Ajustar o valor
-        //Converter o valor
-        //Mostrar o valor no campo de real
+        let fixedValue = fixValue(usdInput.value)
+        
+        let result = fixedValue * dolar
+        result = result.toFixed(2)
+
+        brlInput.value = formatCurrency(result)
     }
 
     if (type=="brl-to-usd") {
-        //Ajustar o valor
-        //Converter o valor
-        //Mostrar o valor no campo de real
+        let fixedValue = fixValue(brlInput.value)
+
+        let result = fixedValue / dolar
+        result = result.toFixed(2)
+
+        usdInput.value = formatCurrency(result)
     }
 }

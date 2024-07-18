@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma calculadora</title>
+</head>
+<body>
+    <h1>Uma calculadora simples</h1>
+
+    <caption>Recarrege a página para tentar novamente.</caption>
+
+    <script>
+        let resultado
+
+        let num1 = Number(window.prompt("Me da um número chefe: "))
+
+        let num2 = Number(window.prompt("Me da outro número ae chefe: "))
+
+        window.alert("Qual operação? \n1 - Soma \n2 - Subtração \n3 - Multiplicação \n4 - Divisão")
+
+        let op = Number(window.prompt("Escolha entre 1 até 4"))
+
+        if (op == 1) {
+            resultado = (num1 + num2)
+        }
+        if (op == 2) {
+            resultado = (num1 - num2)
+        }
+        if (op == 3) {
+            resultado = (num1 * num2)
+        }
+        if (op == 4) {
+            resultado = (num1 / num2)
+        } 
+        if (op > 5) {
+            window.alert("Você escolher errado...")
+        }
+    
+        window.alert("O valor da operação é " + resultado)
+        
+    </script>
+</body>
+</html>
