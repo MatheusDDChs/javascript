@@ -15,33 +15,36 @@
 
                 <p>
                     <label for="altura">Insira sua altura: </label>
-                    <input type="text" name="altura" id="altura">
+                    <input type="number" name="altura" id="altura">
                 </p>
 
                 <p>
                     <label for="peso">Adicione seu peso: </label>
-                    <input type="text" name="peso" id="peso">
+                    <input type="number" name="peso" id="peso">
                 </p>
 
 
             <p>
-                <input id="enviar" type="submit" value="Calcular">
+                <input id="enviar" type="submit" value="Calcular" onclick="calcImc()">
                 <input type="reset" value="Apagar">
+                <div id="res">Resultado</div>
             </p>
 
         </fieldset>
     </form>
 
 <script> 
-
-    let envia = document.querySelector("#enviar")
-
-    const calcImc = () => {
-        const altura = document.imcform.querySelector("#altura").value;
-
+    function calcImc() {
+        const altura = document.imcform.querySelector("#altura");
         const peso = document.querySelector("#peso");
+        const res = document.querySelector("#res")
 
-        console.log(peso)
+        const v1 = Number(altura.value)
+        const v2 = Number(peso.value)
+
+        const s = Number.parseFloat(v1 + v2)
+         
+        res.innerHTML = `A soma de sua altura de ${v1} vezes o seu peso de ${v2} é igual a ${s}`
     }
 
 </script>
