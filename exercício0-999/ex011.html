@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETRAN</title>
+</head>
+<body>
+    
+    <h1>Sistema de transito</h1>
+    <p>
+        Velocidade do carro: 
+        <input type="number" name="txtvel" id="txtvel">Km/h <input type="button" value="Verificar" onclick="calcvel()">
+    </p>
+    <p>
+        <output id="res">Resultado</output>
+    </p>
+
+<script>
+    function calcvel() {
+        const txtvel = document.querySelector("#txtvel")
+        const vel = Number(txtvel.value)
+        const res = document.querySelector("#res")
+
+        res.innerHTML = `Sua velocidade atual é de ${vel}Km/h `
+        if (vel > 60) {
+            res.innerHTML = " Você foi multado!!!"
+        } 
+        if (vel >= 50 && vel <= 60) {
+            res.innerHTML += " Dirija sempre com cinto de segurança!"
+        }
+        else {
+            res.innerHTML += " Está um pouco devagar senhor!"
+        }
+    }
+</script>
+</body>
+</html>

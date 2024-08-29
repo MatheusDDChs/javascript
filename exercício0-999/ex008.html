@@ -39,12 +39,12 @@
         const peso = document.querySelector("#peso");
         const res = document.querySelector("#res")
 
-        const v1 = Number(altura.value)
-        const v2 = Number(peso.value)
+        const v1 = Number.parseFloat(altura.value)
+        const v2 = Number.parseFloat(peso.value)
 
-        const s = Number.parseFloat(v1 + v2)
+        const s = Number.parseFloat(v1 * v2)
          
-        res.innerHTML = `A soma de sua altura de ${v1} vezes o seu peso de ${v2} é igual a ${s}`
+        res.innerHTML = `A soma de sua altura de ${v1} vezes o seu peso de ${v2} é igual a <strong>${s}</strong>`
     }
 
 </script>
