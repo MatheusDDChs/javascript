@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia-Noite</title>
+    <style>
+        * {
+            margin: auto auto auto auto;
+        }
+        body {
+            background-color: rgb(97, 65, 65);
+        }
+
+        h1 {
+            margin: 30px auto 30px auto;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            border-radius: 15px;
+            background-color: white;
+            margin: auto;
+            width: 40vw;
+            height: 40vh;
+        }
+
+        p {
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        main p {
+            color: black;
+        }
+    </style>
+</head>
+<body id="main">
+    <h1>Hora do dia</h1>
+
+    <main>
+        <p id="now1"></p>
+        <img id="" src="" alt="">
+    </main>
+    <p>₢ Matheus Diedrichs</p>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    let now = new Date()
+    let hour = now.getHours()
+    let minutes = now.getMinutes()
+
+    function day(){
+        let p1 = document.querySelector("#now1")
+
+            p1.innerHTML = (`Agora são ${hour} horas e ${minutes} minutos`)
+    }
+day()
+
+        if (hour >= 6 && hour < 12){
+        main.style.backgroundColor = 'lightyellow'
+    }
+    if (hour >= 12 && hour < 18) {
+        main.style.backgroundColor = 'lightblue'
+    } else {
+        main.style.backgroundColor = 'darkblue'
+    }
+})
+
+
+
+
+</script>
+</html>
