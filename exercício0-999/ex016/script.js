@@ -10,7 +10,7 @@ function calc() {
 
     //Verifica se valores são válidos
     if (isNaN(kmNum) || isNaN(valNum)) {
-        resultado.innerHTML = "Por favor, escolha um número válidos."
+        resultado.innerHTML = "Por favor, escolha um número válido."
         return false;
     }
 
@@ -18,8 +18,7 @@ function calc() {
     let res = kmNum * valNum;
 
     if (kmNum > 0 &&  kmNum < 100) {
-        resultado.innerHTML = `O valor deste frete será de R$ ${res.toFixed(2)}`
-
+        resultado.innerHTML = `Você está utilizando a faixa <strong>1</strong>. O valor deste frete será de R$ ${res.toFixed(2)}`
     } 
 
     else if (kmNum >= 100 && kmNum <= 200) {
@@ -35,7 +34,7 @@ function calc() {
     }
 
     else {
-        resultado.innerHTML = "Insira uma distância válida. Insira uma distância entre 1 e 99 Km."
+        resultado.innerHTML = "Insira uma distância e valor válidos."
     }
 
     return false
