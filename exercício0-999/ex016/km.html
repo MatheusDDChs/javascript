@@ -1,34 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kilometer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
 </head>
 <body>
     
-    <h1>Calcular Frete</h1>
+    <header>
+        <h1>Calcular Frete</h1>
+    </header>
 
-    <form action="">
+    <form action="" onsubmit="return calc()">
+        <caption>Calcule seu frete com base no Km e com um valor por Km</caption>
         <p>
-            <label for="kilometer"></label>
+            <label for="kilometer">Quantos Kilometros será viajado? </label>
+            <br>
             <input type="text" name="kilometer" id="km1">
         </p>
 
         <p>
-            <label for="valor"></label>
+            <label for="valor">Qual será o valor por Kilometro? </label>
+            <br>
             <input type="text" name="valor" id="num1">
         </p>
 
         <p>
-            <input type="submit" value="Enviar" onclick="calc()">
+            <input type="submit" value="Enviar">
             <input type="reset" value="Limpar">
         </p>
     </form>
 
-    <p id="resultado"></p>
+    <p id="resultado">Valor do Frete</p>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>Created by <a href="https://github.com/MatheusDDChs" target="_blank">Matheus</a>
+        </p>
+    </footer>
+
+    <script src="script.js"> </script>
 </body>
 </html>
