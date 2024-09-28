@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #a4a4a4;
+    width: 100vw;
+    height: 150px;
+}
+
+.header__logo {
+    
+}
