@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Dia-Noite</title>
+    <title>Verificador de idade</title>
 </head>
 <body id="main">
     <header>
@@ -15,16 +15,22 @@
     <main>
         <div>
             <p>Ano de nascimento</p>
-            <form action="" method="post">
+            
                 <label for="data">Qual seu ano de nascimento? </label>
-                <input type="date" name="data" id="anon">
+                <input type="date" name="data" id="data1">
 
-                <input type="submit" value="enviar()">
-            </form>
+                <p>Sexo:
+                    <input type="radio" name="radsex" id="mas">
+                    <label for="mas">Masculino</label>
+                    <input type="radio" name="radsex" id="fem">
+                    <label for="fem">Feminino</label>
+                </p>
+
+                <input type="submit" value="Enviar" onclick="verificar()">
         </div>
 
         <div>
-            <p id="pidade"></p>
+            <p id="pres">Preencha o formulário para ver o resultado!</p>
             <img id="" src="" alt="">
         </div>
     </main>

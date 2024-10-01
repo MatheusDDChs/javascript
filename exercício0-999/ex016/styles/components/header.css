@@ -6,8 +6,59 @@
     background-color: #a4a4a4;
     width: 100vw;
     height: 150px;
+    padding-inline: 1.25rem;
+    padding-block: 1.5rem;
+    justify-content: space-between;
+}
+
+.header__section__primary {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.header__section__second {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: end;
 }
 
 .header__logo {
-    
+    margin-inline: 1rem;
+    width: 300px;
+    height: 100px;
+    background-color: antiquewhite;
+
+}
+
+.header__id {
+    font-size: 2.25rem;
+}
+
+.header__fav {
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    margin: 1rem;
+}
+
+.header__not {
+    width: 100px;
+    height: 100px;
+    background-color: antiquewhite;
+    margin: 1rem;
+}
+
+.header__comp {
+    width: 350px;
+    height: 100px;
+    background-color: antiquewhite;
+    margin: 1rem;
+}
+
+.header__user {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(206, 205, 204);
 }

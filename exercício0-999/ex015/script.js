@@ -1,28 +1,15 @@
-document.addEventListener("DOMContentLoaded", function() {
+function verificar() {
     let now = new Date()
-    let nyear = now.getFullYear()
+    let nyear = Number(now.getFullYear())
     let nday = now.getDay()
+    let data1 = document.querySelector("#data1")
+    let res = document.querySelector("#pres")
 
-    let anon = document.querySelector("#anon")
-
-    anon.addEventListener("change", function() {
-        let inputniver = new Date(anon.value)
-        let anoniver = inputniver.getFullYear()
-
-        if (anoniver) {
-            let idade = nyear - anoniver
-            console.log(`Sua idade é de ${idade}`)
+        if (data1.value.length == 0 || Number(data1.value) > nyear){
+            window.alert("[ERRO] Verifique os dados e tente novamente!")
         } else {
-            console.log("Insira uma data válida")
+            let fsex  = document.getElementById('radsex')
+            let idade = nyear - Number(data1.value)
+            res.innerHTML = `idade calculada: ${idade}`
         }
-    })
-
-    window.enviar = function() {
-        let tidade = document.querySelector("#pidade")
-
-        if (idade > 0) {
-            tidade 
-        }
-    }
-})
-
+}
