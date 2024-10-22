@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia 1 JS</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #d3d1d1;
+        }
+    </style>
+</head>
+<body>
+    <h1>testes aritméticos e de operados também!</h1>
+
+    <p class="p1"></p>
+    <p class="p2"></p>
+
+    <script>
+
+        let val1 = 4
+        let val2 = 7
+
+        val1 += 10
+        
+        if (val1 > val2) {
+            let p1 = document.querySelector(".p1")
+            document.write("A resposta é: " + val1)
+            document.write(typeof(val1))
+        } 
+        else {
+            let p2 = document.querySelector(".p2")
+            document.write(val2)
+            document.write(typeof(val2))
+        }
+
+
+        document.write(typeof(val1))
+    </script>
+</body>
+</html>
