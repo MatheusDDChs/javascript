@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de dados</title>
+</head>
+<style>
+    body {
+        background-color: #988888;
+        text-align: center;
+    }
+
+    .botao {
+        width: 5rem;
+        height: 2rem;
+    }
+</style>
+<body>
+
+    <input type="number" class="value1">
+    <input type="number" class="value2">
+
+    <button class="botao" onclick="result()">Enviar</button>
+    
+    <form>
+        <input type="radio" name="alt1" id="mult" checked>
+        <label for="mult">Multiplication</label>
+        <input type="radio" name="alt1" id="add">
+        <label for="add">Adition</label>
+        <input type="radio" name="alt1" id="sub">
+        <label for="sub">subtraction</label>
+        <input type="radio" name="alt1" id="div">
+        <label for="div">division</label>
+    </form>
+
+</body>
+
+<script>
+
+    function result() {
+
+    // pega os elementos em hmtl e trás pro js
+    let value1 = document.querySelector(".value1").value
+    let value2 = document.querySelector(".value2").value
+
+    // transforma estes elementos em números para soma e etc
+    let val1 = Number(value1)
+    let val2 = Number(value2)
+
+    // abre uma variável indefinida pra eu preencher a depender dos ifs
+    let res;
+
+    // verifica as caixas marcadas e faz o cálculo a partir disto
+        if (document.querySelector("#mult").checked) {
+            res = val1 * val2
+        }
+        else if (document.querySelector("#add").checked) {
+            res = val1 + val2
+        }
+        else if (document.querySelector("#sub").checked) {
+            res = val1 - val2
+        }
+        else if (document.querySelector("#div").checked) {
+            // código pra saber se ta dividindo por 0 ou não 
+            if (val2 !== 0) {
+                res = val1 / val2
+            } else {
+            window.alert("[ERRO] Divisão por zero não é permitida! ")
+            return;
+            // return pra caso de algum erro ele vai para a função e vai impedir de bugar tudo
+        }
+    } 
+    // expõe o resultado e o tipo do resultado ao usuário
+     window.alert("Resultado: " + res)
+     window.alert("Tipo de dado: " + typeof res)
+}
+
+    //exemplo de tipos de dados
+
+    // Numbers:
+let length = 16;
+let weight = 7.5;
+
+// Strings:
+let color = "Yellow";
+let lastName = "Johnson";
+
+// Booleans
+let x = true;
+let y = false;
+
+// Object:
+const person = {firstName:"John", lastName:"Doe"};
+
+// Array object:
+const cars = ["Saab", "Volvo", "BMW"];
+
+// Date object:
+const date = new Date("2022-03-25");
+
+document.write(typeof length, " ")
+document.write(typeof color, " " )
+document.write(typeof x, " ")
+document.write(typeof person, " " )
+</script>
+</html>
