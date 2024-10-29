@@ -15,10 +15,41 @@
         LastName: "Diedrichs",
         id: 154,
         FullName: function() {
-           document.write("Olá meu primeiro nome é " + this.FirstName + ", e meu segundo é " + this.LastName)
+           return "Olá meu primeiro nome é " + this.FirstName + ", e meu segundo é " + this.LastName
         }
     }
     document.write(matheus.FullName())
     document.write("Olá Mundo")
+
+    const produto = {
+        descrição: "Tech T-shirt Insider",
+        nome: "Camiseta",
+        Valor: 89.99,
+        exibirDetalhes: function() {
+            console.log(this.nome + " - " + this.descrição + " - R$" + this.Valor) 
+        }
+    }
+    console.log(produto.exibirDetalhes())
+    const tarefa = {
+        nome: "Estudar JavaScript",
+        status: "pendente",
+        marcarComoCompleta: function() {
+            this.status = "Completa"
+        }
+    }
+
+    console.log(tarefa.nome + " - " +tarefa.status)
+    tarefa.marcarComoCompleta() //Chamando a função, ela vai completar a tarefa alterando seu status
+    console.log(tarefa.nome + " - " +tarefa.status)
+
+    const pergunta = {
+        texto: "Foi na USP hoje?",
+        opcoes: ["Sim", "Não", "vagabundo?", "trabalhar"],
+        respostaCorreta: 2,
+        verificarResposta: function(opcaoEscolhida) {
+            return opcaoEscolhida === this.respostaCorreta
+        }
+    }
+    console.log(pergunta.verificarResposta(2))
 </script>
 </html>
