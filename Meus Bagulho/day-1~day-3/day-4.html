@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia 4</title>
+    <style>
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Testando Objetos na tela</h1>
+    <p></p>
+    <p class="text2"></p>
+
+    <p class="text3"></p>
+
+    <script>
+        let text = document.querySelector("p")
+
+        const agile = {
+            cor: "azul",
+            ano: 2014,
+            cv: 120,
+            marca: "chevrolet",
+/*             sobre: function() { 
+              return `A fabricante ${this.marca} criou o Agile da cor ${this.cor} com um motor de ${this.cv} cavalos e no ano de ${this.ano}`
+                } */
+        }
+
+        let texto = ""
+        for (let [specs, valor] of Object.entries(agile)) {
+            texto += specs + ": " + valor + "<br>"
+        }
+
+        text.innerHTML = texto
+
+/*         let texto = " "
+        for (let x in agile) {
+            texto += agile[x]  + " |__| "
+        } */
+
+/*         text.innerHTML = texto */
+
+        //text.innerHTML = `O Agile da cor ${agile.cor} possui aproximadamente ${agile.cv} cavalos`
+
+
+        //CONTRUCTORS
+
+        function Carro(marca, modelo, ano, cor) {
+            this.marca = marca,
+            this.modelo = modelo,
+            this.ano = ano,
+            this.cor = cor
+            this.dirige = function(){
+                return `Você dirige o ${this.modelo}`
+            }    
+        }
+
+        // PRIMEIRO CARRO
+        const carro1 = new Carro("Ford", "Mustang", 2020, "preto")
+
+        let txt2 = document.querySelector(".text2")
+
+        let texto2 = " "
+        for (let [tipo, valor] of Object.entries(carro1)) {
+            texto2 += tipo + ": " + valor + "<br>"
+        }
+        texto2 += "<br>" +carro1.dirige()
+        txt2.innerHTML = texto2
+
+        // SEGUNDO CARRO
+        const carro2 = new Carro("Porsche", "Porsche 911", 2024, "branco")
+
+        let txt3 = document.querySelector(".text3")
+
+        let texto3 = " "
+        for (let [tipo, valor] of Object.entries(carro2)) {
+            texto3 += tipo + ": " + valor + "<br>"
+        }
+        texto3 += "<br>" +carro2.dirige()
+
+        txt3.innerHTML = texto3
+    </script>
+</body>
+</html>

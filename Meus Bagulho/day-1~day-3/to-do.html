@@ -1,40 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do</title>
+    <title>To-Do List com Duplicação</title>
     <style>
 
         body {
-            background-color: rgb(83, 83, 146);
-        } 
+            text-align: center;
+            background-color: #1B9AAA;
+        }
 
-        .todo__main {
-            width: 500px;
-            height: 700px;
-            margin: auto;
+        .to-do-item {
+            padding: 1.5rem;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #DDDBCB;
+            max-width: 980px;
+            margin: 2rem auto 2rem auto;
             border-radius: 10px;
-            background-color: grey;
+            height: 2rem;
         }
 
     </style>
 </head>
+
 <body>
-    
-    <section class="todo__main">
+    <h1>To-Do List</h1>
+    <div id="to-do-list">
+        <!-- Item inicial -->
+        <div class="to-do-item">
+            <input type="radio" name="to-do">
+            <label ondblclick="tornarEditavel(this)">Arrumar a cama</label>
+            <button onclick="duplicarItem(this)">Duplicar</button>
+        </div>
+    </div>
 
-        <form>
-            <input type="radio" name="to-do" id="to-do1">
-            <label for="">Arrumar a casa</label>
+    <script>
+        // Função para duplicar o item
+        function duplicarItem(botao) {
+            const itemOriginal = botao.parentNode; // Pega o elemento pai (o item todo)
+            const itemDuplicado = itemOriginal.cloneNode(true); // Clona o item
 
- <br>
+            // Limpa o conteúdo de inputs e labels do item duplicado
+            itemDuplicado.querySelector("label").textContent = "Novo item"; // Define um texto padrão para o novo label
+            itemDuplicado.querySelector("input").checked = false; // Reseta o status do radio
+            
+            // Adiciona o item duplicado à lista
+            document.getElementById("to-do-list").appendChild(itemDuplicado);
+        }
 
-            <input type="radio" name="to-do" id="to-do1">
-            <label for="">Arrumar a cama</label>
-        </form>
+        // Função para tornar o label editável
+        function tornarEditavel(label) {
+            const textoAtual = label.textContent;
+            const inputEdicao = document.createElement("input");
+            inputEdicao.type = "text";
+            inputEdicao.value = textoAtual;
 
-    </section>
+            // Substitui o label pelo input temporário
+            label.replaceWith(inputEdicao);
+            inputEdicao.focus();
 
+            // Quando o usuário sai do campo de texto (blur), salva a nova entrada
+            inputEdicao.addEventListener("blur", () => {
+                label.textContent = inputEdicao.value || textoAtual; // Salva o novo valor ou mantém o antigo
+                inputEdicao.replaceWith(label); // Retorna o label
+            });
+
+            // Permite salvar o valor com Enter
+            inputEdicao.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    inputEdicao.blur(); // Dispara o evento blur para salvar
+                }
+            });
+        }
+    </script>
 </body>
 </html>
