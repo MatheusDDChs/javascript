@@ -4,35 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tipos de dados</title>
-</head>
-<style>
-    body {
-        background-color: #988888;
-        text-align: center;
-    }
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="calc.css">
 
-    .botao {
-        width: 5rem;
-        height: 2rem;
-    }
-</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
 <body>
 
-    <input type="number" class="value1">
-    <input type="number" class="value2">
-
-    <button class="botao" onclick="result()">Enviar</button>
-    
-    <form>
-        <input type="radio" name="alt1" id="mult" checked>
-        <label for="mult">Multiplication</label>
-        <input type="radio" name="alt1" id="add">
-        <label for="add">Adition</label>
-        <input type="radio" name="alt1" id="sub">
-        <label for="sub">subtraction</label>
-        <input type="radio" name="alt1" id="div">
-        <label for="div">division</label>
-    </form>
+    <div class="main">
+        <div class="valores">
+            <input type="number" class="value1">
+            <form>
+                <input type="radio" name="alt1" id="mult" checked>
+                <label for="mult">Multiplication</label>
+        
+                <input type="radio" name="alt1" id="add">
+                <label for="add">Adition</label>
+        
+                <input type="radio" name="alt1" id="sub">
+                <label for="sub">subtraction</label>
+        
+                <input type="radio" name="alt1" id="div">
+                <label for="div">division</label>
+            </form>
+            <input type="number" class="value2">
+        </div>
+        <button class="botao" onclick="result()">Enviar</button>
+    </div>
 
 </body>
 
@@ -98,10 +98,5 @@ const cars = ["Saab", "Volvo", "BMW"];
 
 // Date object:
 const date = new Date("2022-03-25");
-
-document.write(typeof length, " ")
-document.write(typeof color, " " )
-document.write(typeof x, " ")
-document.write(typeof person, " " )
 </script>
 </html>

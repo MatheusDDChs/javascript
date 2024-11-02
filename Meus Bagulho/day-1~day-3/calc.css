@@ -1,0 +1,30 @@
+.botao {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: #FF9F0A;
+    margin: auto;
+    display: block;
+}
+
+.valores {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+.valores > input {
+    width: 20ch;
+    height: 2rem;
+    margin-inline: auto;
+    margin-block: 1rem;
+}
+
+.main {
+    margin: 3rem;
+    background-color: #292A2F;
+    max-width: 1080px;
+    margin: auto;
+    border-radius: 10px;
+}
