@@ -12,72 +12,93 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <div class="main">
         <div class="valores">
             <input type="number" class="value1">
-            <form>
-                <input type="radio" name="alt1" id="mult" checked>
+            <p id="ultimovalor"></p>
+            <form class="form-wrapper">
+                <input type="radio" name="alt1" id="mult" checked  class="radio-group">
                 <label for="mult">Multiplication</label>
         
-                <input type="radio" name="alt1" id="add">
+                <input type="radio" name="alt1" id="add" class="radio-group">
                 <label for="add">Adition</label>
         
-                <input type="radio" name="alt1" id="sub">
+                <input type="radio" name="alt1" id="sub" class="radio-group">
                 <label for="sub">subtraction</label>
         
-                <input type="radio" name="alt1" id="div">
+                <input type="radio" name="alt1" id="div" class="radio-group">
                 <label for="div">division</label>
             </form>
-            <input type="number" class="value2">
         </div>
-        <button class="botao" onclick="result()">Enviar</button>
+
+        <button class="botao" onclick="result()">Calcular</button>
+        <button class="botao" onclick="resetar()">Resetar</button>
     </div>
 
 </body>
 
 <script>
 
-    function result() {
+let resultadoatual = 0;
+let operaçãoatual = "mult"
 
+    function result() {
     // pega os elementos em hmtl e trás pro js
     let value1 = document.querySelector(".value1").value
-    let value2 = document.querySelector(".value2").value
 
     // transforma estes elementos em números para soma e etc
     let val1 = Number(value1)
-    let val2 = Number(value2)
+
+    document.querySelector("#ultimovalor").innerHTML = "Último valor inserido: " + val1
 
     // abre uma variável indefinida pra eu preencher a depender dos ifs
-    let res;
 
     // verifica as caixas marcadas e faz o cálculo a partir disto
         if (document.querySelector("#mult").checked) {
-            res = val1 * val2
+            operaçãoatual = "mult"
         }
         else if (document.querySelector("#add").checked) {
-            res = val1 + val2
+            operaçãoatual = "add"
         }
         else if (document.querySelector("#sub").checked) {
-            res = val1 - val2
+            operaçãoatual = "sub"
         }
         else if (document.querySelector("#div").checked) {
-            // código pra saber se ta dividindo por 0 ou não 
-            if (val2 !== 0) {
-                res = val1 / val2
-            } else {
-            window.alert("[ERRO] Divisão por zero não é permitida! ")
-            return;
-            // return pra caso de algum erro ele vai para a função e vai impedir de bugar tudo
+            operaçãoatual = "div"
         }
+        // Realiza a operação com o valor atual e o valor inserido
+
+    if (resultadoatual ===null) {
+        resultadoatual = val1;
+    }
+    else {
+        if(operaçãoatual === "mult") {
+            resultadoatual *= val1
+        } else if (operaçãoatual === "add") {
+            resultadoatual += val1
+        } else if (operaçãoatual === "sub") {
+            resultadoatual -= val1 
+        } else if (operaçãoatual === "div") {
+            if (val1 !== 0) {
+                resultadoatual /= val1
+            } else {
+                alert("[ERRO] Divisão por zero não é permitida!"); return
+            }
+        }
+    }
+            // Mostra o resultado no input e limpa o valor digitado
+            document.querySelector(".value1").value = resultadoatual;
+
     } 
-    // expõe o resultado e o tipo do resultado ao usuário
-     window.alert("Resultado: " + res)
-     window.alert("Tipo de dado: " + typeof res)
-}
+
+    function resetar() {
+        resultadoatual = null
+        document.querySelector("#value1").value = "";
+        document.querySelector("#ultimovalor").innerHTML = "Último valor inserido: Nenhum";
+    }
+
 
     //exemplo de tipos de dados
-
     // Numbers:
 let length = 16;
 let weight = 7.5;

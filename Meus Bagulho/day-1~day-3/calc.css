@@ -1,30 +1,78 @@
 .botao {
     width: 100px;
-    height: 100px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
     background-color: #FF9F0A;
     margin: auto;
     display: block;
+    transition: background-color ease 0.3s, color 0.5s;
+    margin-bottom: 1rem;
+}
+
+.botao:hover {
+    background-color: white;
+    color: #FF9F0A;
 }
 
 .valores {
+    background-color: #292A2F;
     display: flex;
     flex-direction: column;
     margin: auto;
     text-align: center;
     align-items: center;
 }
+
+.form-wrapper {
+    flex: 1;
+}
+
+#ultimovalor {
+    opacity: 80%;
+}
+
+label {
+    min-width: 15ch;
+    flex-direction: column;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 10px;
+    border: 2px solid #A5A5A5;
+    border-radius: 20px;
+    color: #A5A5A5;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#mult, #add, #sub, #div {
+    display: none;
+}
+
+.radio-group:checked + label{
+    background-color: #007bff;
+    color: white;
+}
+
 .valores > input {
-    width: 20ch;
-    height: 2rem;
-    margin-inline: auto;
-    margin-block: 1rem;
+    margin: 0.5rem;
+    width: 30ch;                   /* Preenche a largura total do contêiner */
+    padding: 10px;                 /* Espaçamento interno para aumentar o tamanho */
+    font-size: 16px;               /* Aumenta o tamanho da fonte */
+    border: 2px solid #007bff;     /* Cor da borda */
+    border-radius: 8px;            /* Bordas arredondadas */
+    outline: none;                 /* Remove o contorno padrão */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transições para hover e foco */
+    font-family: 'Poppins', sans-serif; /* Fonte personalizada */
+    color: #333;                   /* Cor do texto */
 }
 
 .main {
-    margin: 3rem;
+    display: block;
+    margin: 4rem auto;
+    padding: 2rem;
     background-color: #292A2F;
-    max-width: 1080px;
-    margin: auto;
+    max-width: 768px;
     border-radius: 10px;
 }
