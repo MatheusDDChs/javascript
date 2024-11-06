@@ -1,0 +1,55 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    line-height: calc(1em + 0.5rem);
+    font: inherit;
+}
+
+body {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+
+    min-height: 100vh;
+    background-color: #100817;
+    color: #f3f3f3;
+    font-family: "Poppins", sans-serif;
+    background-image: linear-gradient(45deg, #2E0D32 0%, #441149 20%, #100817 80%, #2E0D32 100%);
+}
+
+.container {
+    max-width: 1280px;
+    margin-inline: auto;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    border: none;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -0.025em;
+}

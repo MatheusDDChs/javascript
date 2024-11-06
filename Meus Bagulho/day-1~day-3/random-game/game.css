@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.game {
+    margin: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    opacity: 90%;
+
+}
+
+#palpite {
+    text-align: center;
+    border-radius: 5px;
+    opacity: 80%;
+    font-weight: 500;
+    font-size: larger;
+    font-style: normal;
+}
+
+#feedback{
+    font-weight: 500;
+}
+
+#tentativas {
+
+}
+
+button {
+    margin-inline: 0.5rem;
+    margin-block: 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding: 0.5em 2em;
+    background-image: linear-gradient(to right, #FA5030, #F514F0);
+    color: #f3f3f3;
+}
