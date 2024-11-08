@@ -11,10 +11,13 @@
     align-items: center;
 }
 
-label {
-    opacity: 90%;
-
+.button-wrapper {
+    height: 100px;
+    padding: 10px;
+    border: 2px solid #f514f169;
+    border-radius: 5px;
 }
+
 
 #palpite {
     text-align: center;
@@ -29,8 +32,8 @@ label {
     font-weight: 500;
 }
 
-#tentativas {
-
+#Enviar {
+    background-image: linear-gradient(to right, #F514F0, #FA5030)
 }
 
 button {
