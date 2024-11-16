@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personagem</title>
+    <style>
+        body {
+            background-color: grey;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .status {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #return, #return1 {
+            margin: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Status de Matheus</h1>
+
+    <div id="vida" class="status">Vida: 100</div>
+    <div id="energia" class="status">Energia: 30</div>
+    <div id="forca" class="status">Força: 50</div>
+
+    <button onclick="dano()">Dar dano</button>
+    <div id="return"></div>
+    <div id="return1"></div>
+
+    <div id="enemy-vida" class="status">Vida: 80</div>
+    <div id="enemy-energia" class="status">Energia: 20</div>
+    <div id="enemy-forca" class="status">Força: 60</div>
+
+    <script>
+let life = document.querySelector("#vida")
+let energy = document.querySelector("#energia")
+let strenght = document.querySelector("#forca")
+let Personagem = document.querySelector("#return")
+
+let enemy = document.querySelector("#return1")
+let enemylife = document.querySelector("#enemy-vida")
+let enemyenergy = document.querySelector("#enemy-energia")
+let enemystrenght = document.querySelector("#enemy-forca")
+
+function atualizarStatus() {
+life.innerHTML = matheus.vida
+energy.innerHTML = matheus.energia
+strenght.innerHTML = matheus.forca 
+}
+
+function atualizarStatushollow() {
+enemylife.innerHTML = hollow.vida
+enemyenergy.innerHTML = hollow.energia
+enemystrenght.innerHTML = hollow.forca 
+}
+
+        /* OBJETO MATHEUS */
+        let matheus = {
+            vida: 100,
+            energia: 30,
+            forca: 50
+            }
+
+        /* OBJETO INIMIGO */
+        let hollow = {
+            vida: 80,
+            energia: 20,
+            forca: 60
+        }
+        
+        function  dano() {
+        if (hollow.vida > 0) {
+            hollow.vida -= 30
+            atualizarStatushollow()
+    }
+        if (hollow.vida <= 0) {
+            hollow.vida = 0
+            atualizarStatushollow()
+            window.alert("INIMIGO DERROTADO")
+        }
+}
+
+atualizarStatus()
+
+Personagem.innerHTML = "Status: <br>"
+    for (let specs in matheus) {
+        Personagem.innerHTML += `${specs}: ${matheus[specs]} <br>`
+    }
+
+    enemy.innerHTML = "Status do Inimigo: <br>"
+    for (let specs in hollow) {
+        enemy.innerHTML += `${specs}: ${hollow[specs]} <br>`
+    }
+
+
+
+    /*    for (let x in matheus) {
+        life.innerHTML += matheus[x] + "___"
+    } 
+
+    for...of: Para iterar diretamente sobre valores de um {array} ou uma coleção iterável.
+
+for (const item of array) {
+    console.log(item);
+}
+
+for...in: Para iterar sobre as chaves de um {objeto}, ideal para acessar propriedades.
+
+for (const key in obj) {
+    console.log(key, obj[key]);
+} */
+    </script>
+</body>
+</html>
