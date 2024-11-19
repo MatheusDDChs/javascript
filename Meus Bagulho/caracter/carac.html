@@ -25,17 +25,21 @@
     <h1>Status de Matheus</h1>
 
     <div id="vida" class="status">Vida: 100</div>
-    <div id="energia" class="status">Energia: 30</div>
+    <div id="energia" class="status">Energia: 20</div>
     <div id="forca" class="status">Força: 50</div>
 
-    <button onclick="dano()">Dar dano</button>
+    <button onclick="dano()">Atacar</button>
+    <button onclick="recuperar()">Recuperar</button>
     <div id="return"></div>
+
+    <!-- parte do Inimigo -->
     <div id="return1"></div>
 
     <div id="enemy-vida" class="status">Vida: 80</div>
-    <div id="enemy-energia" class="status">Energia: 20</div>
+    <div id="enemy-energia" class="status">Energia: 40</div>
     <div id="enemy-forca" class="status">Força: 60</div>
 
+    <button onclick="curar()">Curar inimigo</button>
     <script>
 let life = document.querySelector("#vida")
 let energy = document.querySelector("#energia")
@@ -59,34 +63,66 @@ enemyenergy.innerHTML = hollow.energia
 enemystrenght.innerHTML = hollow.forca 
 }
 
+//OBJETO BASE
+
+    function padrao(vida, energia, forca) {
+        this.vida = vida,
+        this.energia = energia,
+        this.forca = forca
+    }
+
         /* OBJETO MATHEUS */
-        let matheus = {
-            vida: 100,
-            energia: 30,
-            forca: 50
-            }
+        let matheus = new padrao(100, 20, 50)
 
         /* OBJETO INIMIGO */
-        let hollow = {
-            vida: 80,
-            energia: 20,
-            forca: 60
-        }
+        let hollow = new padrao(80, 40, 60)
         
+
+        //função que da dano se estiver com vida maior que zero, e se for igual ou menor que zero ele deixa zerada e atualiza os status
         function  dano() {
         if (hollow.vida > 0) {
+            matheus.energia -= 10
             hollow.vida -= 30
+            atualizarStatus()
             atualizarStatushollow()
     }
         if (hollow.vida <= 0) {
             hollow.vida = 0
             atualizarStatushollow()
             window.alert("INIMIGO DERROTADO")
-        }
+    } 
+        if (matheus.energia <= 0) {
+            matheus.energia = 0
+            atualizarStatus()
+    }   else {
+        window.alert("Sua energia acabou, recupere para Atacar novamente")
+    }
 }
 
-atualizarStatus()
+        //FUNÇÃO DE CURA
+        function curar() {
+            if (hollow.vida >= 0 && hollow.vida < 80) {
+                hollow.vida += 20
+                atualizarStatushollow()
+                window.alert("O inimigo se curou!")
+            }
 
+            if (hollow.vida >= 80) {
+                hollow.vida = 80
+                atualizarStatushollow()
+                window.alert("O inimigo está com a vida cheia!!!")
+            }
+        }
+
+        function recuperar() {
+            if (matheus.energia >= 0) {
+                matheus.energia += 10
+                atualizarStatus()
+            }
+        }
+
+atualizarStatus()
+// RETORNO DAS ESPECIFICAÇÕES
 Personagem.innerHTML = "Status: <br>"
     for (let specs in matheus) {
         Personagem.innerHTML += `${specs}: ${matheus[specs]} <br>`
