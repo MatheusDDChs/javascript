@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personagem</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: grey;
@@ -19,53 +20,65 @@
         #return, #return1 {
             margin: 2rem;
         }
+
+        main {
+            display: flex;
+        }
     </style>
 </head>
 <body>
     <h1>Status de Matheus</h1>
 
-    <div id="vida" class="status">Vida: 100</div>
-    <div id="energia" class="status">Energia: 20</div>
-    <div id="forca" class="status">Força: 50</div>
+    <main>
+        <div class="aliado">
+            <div id="return"></div>
+            <div id="vida" class="status">Vida: 100</div>
+            <div id="energia" class="status">Energia: 20</div>
+            <div id="forca" class="status">Força: 50</div>
+            <button onclick="dano()">Atacar</button>
+            <button onclick="pocaoEnergia.usar()">Recuperar</button>
+        </div>
 
-    <button onclick="dano()">Atacar</button>
-    <button onclick="recuperar()">Recuperar</button>
-    <div id="return"></div>
+        <!-- parte do Inimigo -->
+        <div class="inimigo">
+            <div id="return1"></div>
+            <div id="enemy-vida" class="status">Vida: 80</div>
+            <div id="enemy-energia" class="status">Energia: 40</div>
+            <div id="enemy-forca" class="status">Força: 60</div>
+            <button onclick="curar()">Curar inimigo</button>
+        </div>
+    </main>
 
-    <!-- parte do Inimigo -->
-    <div id="return1"></div>
-
-    <div id="enemy-vida" class="status">Vida: 80</div>
-    <div id="enemy-energia" class="status">Energia: 40</div>
-    <div id="enemy-forca" class="status">Força: 60</div>
-
-    <button onclick="curar()">Curar inimigo</button>
+<!-- SCRIPT -->
     <script>
+//Pega os elementos no HMTL
 let life = document.querySelector("#vida")
 let energy = document.querySelector("#energia")
 let strenght = document.querySelector("#forca")
 let Personagem = document.querySelector("#return")
 
+//Pega os elementos HTML do inimigo
 let enemy = document.querySelector("#return1")
 let enemylife = document.querySelector("#enemy-vida")
 let enemyenergy = document.querySelector("#enemy-energia")
 let enemystrenght = document.querySelector("#enemy-forca")
 
+
 function atualizarStatus() {
-life.innerHTML = matheus.vida
-energy.innerHTML = matheus.energia
-strenght.innerHTML = matheus.forca 
+    life.innerHTML = `Vida: ${matheus.vida}`;
+    energy.innerHTML = `Energia: ${matheus.energia}`;
+    strenght.innerHTML = `Força: ${matheus.forca}`;
 }
 
 function atualizarStatushollow() {
-enemylife.innerHTML = hollow.vida
-enemyenergy.innerHTML = hollow.energia
-enemystrenght.innerHTML = hollow.forca 
+    enemylife.innerHTML = `Vida: ${hollow.vida}`;
+    enemyenergy.innerHTML = `Energia: ${hollow.energia}`;
+    enemystrenght.innerHTML = `Força: ${hollow.forca}`;
 }
 
 //OBJETO BASE
 
-    function padrao(vida, energia, forca) {
+function padrao(vida, energia, forca) {
         this.vida = vida,
         this.energia = energia,
         this.forca = forca
@@ -80,7 +93,7 @@ enemystrenght.innerHTML = hollow.forca
 
         //função que da dano se estiver com vida maior que zero, e se for igual ou menor que zero ele deixa zerada e atualiza os status
         function  dano() {
-        if (hollow.vida > 0) {
+        if (hollow.vida > 0 && matheus.energia > 0) {
             matheus.energia -= 10
             hollow.vida -= 30
             atualizarStatus()
@@ -94,12 +107,11 @@ enemystrenght.innerHTML = hollow.forca
         if (matheus.energia <= 0) {
             matheus.energia = 0
             atualizarStatus()
-    }   else {
-        window.alert("Sua energia acabou, recupere para Atacar novamente")
+            window.alert("Sua energia acabou, recarrege ela para atacar novamente.")
     }
 }
 
-        //FUNÇÃO DE CURA
+        //FUNÇÃO DE CURA / FUNÇÕES DE RECUPERAÇÃO DO INIMIGO
         function curar() {
             if (hollow.vida >= 0 && hollow.vida < 80) {
                 hollow.vida += 20
@@ -114,16 +126,69 @@ enemystrenght.innerHTML = hollow.forca
             }
         }
 
-        function recuperar() {
-            if (matheus.energia >= 0) {
-                matheus.energia += 10
-                atualizarStatus()
+//<------- FUNÇÕES BASES PARA ITEMS, USAR, VENDER, COMPRAR. ------->
+        function Item(nome, preco, quantidade, efeito) {
+        this.nome = nome,
+        this.preco = preco,
+        this.quantidade = quantidade
+        this.efeito = efeito
+
+    this.usar = function() {
+        if(this.quantidade > 0) {
+            this.quantidade -= 1
+            this.efeito()
+        } else {
+            window.alert("Você não tem mais deste Item...")
+        }
+    }
+
+    this.vender = function(precoVenda) {
+        if(this.quantidade > 0) {
+            this.quantidade -= 1
+            return precoVenda
+        } else {
+            window.alert("Você não tem deste Item para vender.")
+        }
+    }
+
+    this.comprar = function(precoCompra) {
+        this.quantidade += 1
+        return precoCompra
+    }
+}  
+    //POÇÕES <-----------______-----------------______------------>
+
+    let pocaoEnergia = new Item("Poção de Energia", 15, 5, () => {
+        if (matheus.energia < 20) {
+        matheus.energia += 10;
+        if (matheus.energia > 20) {
+            matheus.energia = 20; // Garantir que não ultrapasse o máximo
+        }
+        atualizarStatus();
+    } else {
+        window.alert("Sua energia já está no máximo");
+    }
+});
+
+    let pocaoCura = new Item("Poção de Cura", 20, 5, () => {
+            if (hollow.vida >= 0 && hollow.vida < 80) {
+                hollow.vida += 20
+                atualizarStatushollow()
+                window.alert("O inimigo se curou!")
+            }
+
+            if (hollow.vida >= 80) {
+                hollow.vida = 80
+                atualizarStatushollow()
+                window.alert("O inimigo está com a vida cheia!!!")
             }
         }
+    )
+
 
 atualizarStatus()
 // RETORNO DAS ESPECIFICAÇÕES
-Personagem.innerHTML = "Status: <br>"
+Personagem.innerHTML = "Status do Aliado: <br>"
     for (let specs in matheus) {
         Personagem.innerHTML += `${specs}: ${matheus[specs]} <br>`
     }
