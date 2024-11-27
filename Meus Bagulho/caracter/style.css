@@ -37,9 +37,10 @@ svg {
 button {
     padding: 5px;
     border: 1px solid black;
-    background: blueviolet;
+    background: rgb(80, 59, 99);
     color: whitesmoke;
     cursor: pointer;
+    margin-block: 0.5rem;
 }
 
 h1,

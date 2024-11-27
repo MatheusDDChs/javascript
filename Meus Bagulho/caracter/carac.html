@@ -24,6 +24,22 @@
         main {
             display: flex;
         }
+        
+        .aliado {
+            background-color: #ABC4AB;
+            margin-inline: 2rem;
+            margin-block: 3rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+
+        .inimigo {
+            background-color: #6D4C3D;
+            margin-inline: 2rem;
+            margin-block: 3rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -37,7 +53,9 @@
             <div id="forca" class="status">Força: 50</div>
             <button onclick="dano()">Atacar</button>
             <button onclick="pocaoEnergia.usar()">Recuperar</button>
+            <div id="pocoesE">Nº de Poções de Energia: 2 |||</div>
         </div>
+
 
         <!-- parte do Inimigo -->
         <div class="inimigo">
@@ -45,17 +63,24 @@
             <div id="enemy-vida" class="status">Vida: 80</div>
             <div id="enemy-energia" class="status">Energia: 40</div>
             <div id="enemy-forca" class="status">Força: 60</div>
-            <button onclick="curar()">Curar inimigo</button>
+            <button onclick="pocaoCura.usar()">Curar inimigo</button>
+            <div id="pocoesC">Nº de Poções de Cura: 2</div>
         </div>
     </main>
 
-<!-- SCRIPT -->
+
+
+
+            <!---------------- SCRIPT ------------------>
     <script>
+
 //Pega os elementos no HMTL
 let life = document.querySelector("#vida")
 let energy = document.querySelector("#energia")
 let strenght = document.querySelector("#forca")
 let Personagem = document.querySelector("#return")
+let NpocoesE = document.querySelector("#pocoesE")
+let NpocoesC = document.querySelector("#pocoesC")
 
 //Pega os elementos HTML do inimigo
 let enemy = document.querySelector("#return1")
@@ -109,22 +134,10 @@ function padrao(vida, energia, forca) {
             atualizarStatus()
             window.alert("Sua energia acabou, recarrege ela para atacar novamente.")
     }
+    atualizarPocoes()
 }
 
-        //FUNÇÃO DE CURA / FUNÇÕES DE RECUPERAÇÃO DO INIMIGO
-        function curar() {
-            if (hollow.vida >= 0 && hollow.vida < 80) {
-                hollow.vida += 20
-                atualizarStatushollow()
-                window.alert("O inimigo se curou!")
-            }
 
-            if (hollow.vida >= 80) {
-                hollow.vida = 80
-                atualizarStatushollow()
-                window.alert("O inimigo está com a vida cheia!!!")
-            }
-        }
 
 //<------- FUNÇÕES BASES PARA ITEMS, USAR, VENDER, COMPRAR. ------->
         function Item(nome, preco, quantidade, efeito) {
@@ -158,33 +171,38 @@ function padrao(vida, energia, forca) {
 }  
     //POÇÕES <-----------______-----------------______------------>
 
-    let pocaoEnergia = new Item("Poção de Energia", 15, 5, () => {
+    let pocaoEnergia = new Item("Poção de Energia", 15, 2, () => {
         if (matheus.energia < 20) {
         matheus.energia += 10;
         if (matheus.energia > 20) {
             matheus.energia = 20; // Garantir que não ultrapasse o máximo
         }
         atualizarStatus();
+        atualizarPocoes()
     } else {
         window.alert("Sua energia já está no máximo");
     }
 });
 
-    let pocaoCura = new Item("Poção de Cura", 20, 5, () => {
+    let pocaoCura = new Item("Poção de Cura", 20, 2, () => {
             if (hollow.vida >= 0 && hollow.vida < 80) {
                 hollow.vida += 20
                 atualizarStatushollow()
                 window.alert("O inimigo se curou!")
+                atualizarPocoes()
             }
-
-            if (hollow.vida >= 80) {
+            if (hollow.vida > 80) {
                 hollow.vida = 80
                 atualizarStatushollow()
                 window.alert("O inimigo está com a vida cheia!!!")
             }
         }
     )
-
+    
+    function atualizarPocoes() {
+        NpocoesE.innerHTML = "Nº de Poções de Energia: " + pocaoEnergia.quantidade;
+        NpocoesC.innerHTML = "Nº de Poções de Energia: " + pocaoCura.quantidade
+    }
 
 atualizarStatus()
 // RETORNO DAS ESPECIFICAÇÕES
@@ -197,6 +215,24 @@ Personagem.innerHTML = "Status do Aliado: <br>"
     for (let specs in hollow) {
         enemy.innerHTML += `${specs}: ${hollow[specs]} <br>`
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
