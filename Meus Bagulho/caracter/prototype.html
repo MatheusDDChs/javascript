@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(39, 38, 38);
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script>
+const animal = {
+    tipo: "animal",
+    som: "grito animalesco",
+    emitirSom: function() {
+        console.log(this.som)
+    }
+}
+
+const gato = {
+    tipo: "gato",
+    som: "miau"
+}
+
+Object.setPrototypeOf(gato, animal)
+gato.emitirSom()
+
+const gatoRaivoso = {
+    tipo: "gato raivoso", 
+    miarforte: function() {
+        console.log(this.som.toUpperCase())
+    }
+}
+
+Object.setPrototypeOf(gatoRaivoso, animal)
+gatoRaivoso.miarforte()
+
+console.log('TESTES')
+    </script>
+</body>
+</html>
+
+
+
