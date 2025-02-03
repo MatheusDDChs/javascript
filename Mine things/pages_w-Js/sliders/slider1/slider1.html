@@ -14,10 +14,10 @@
         
         <div class="slides">
             <!-- Radio Buttons -->
-            <input type="radio" name="radio-btn" id="select1">
-            <input type="radio" name="radio-btn" id="select2">
-            <input type="radio" name="radio-btn" id="select3">
-            <input type="radio" name="radio-btn" id="select4">
+            <input type="radio" name="radio-btn" id="select1" class="auto-btn1">
+            <input type="radio" name="radio-btn" id="select2" class="auto-btn2">
+            <input type="radio" name="radio-btn" id="select3" class="auto-btn3">
+            <input type="radio" name="radio-btn" id="select4" class="auto-btn4">
             <!-- End Radio Buttons -->
 
             <!-- Slide images -->
@@ -54,6 +54,25 @@
         </div>
     </div>
 
+    <script>
+
+        let count = 1
+        document.querySelector("#select1").checked = true
+        
+        setInterval( function() {
+            nextImage()
+        }, 2000)
+
+        function nextImage() {
+            count++
+            if(count > 4){
+                count = 1
+            }
+
+            document.querySelector("#select"+count).checked = true
+        }
+
+    </script>
 
 
 </body>

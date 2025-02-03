@@ -3,13 +3,13 @@
 .slider {
     margin: 0 auto;
     width: 1024px;
-    height: 480px;
+    height: 400px;
     overflow: hidden;
 }
 
 .slides {
     width: 400%;
-    height: 560px;
+    height: 400px;
     display: flex;
     align-items: center;
 }
@@ -62,4 +62,17 @@
 }
 #select4:checked ~ .first{
     margin-left: -75%;
+}
+
+#select1:checked ~ .manual-navigation .auto-btn1{
+    background-color: white;
+}
+#select2:checked ~ .manual-navigation .auto-btn1{
+    background-color: white;
+}
+#select3:checked ~ .manual-navigation .auto-btn1{
+    background-color: white;
+}
+#select4:checked ~ .manual-navigation .auto-btn1{
+    background-color: white;
 }
