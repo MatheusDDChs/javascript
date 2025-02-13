@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <style>
+
+        html {
+            background-color: rgb(83, 78, 72);
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            color: white;
+        }
+
+        .buttons {
+            margin-top: 15px;
+            margin: left;
+            max-width: 200px;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <Div class="base">
+        <input type="number" name="base" id="Nbase">
+    </Div>
+
+    <p class="texto1"></p>
+
+    <div class="buttons">
+        <button id="botao1">1</button>
+        <button id="botao2">2</button>
+        <button id="botao3">3</button>
+        <button id="botao4">4</button>
+        <button id="botao5">5</button>
+        <button id="botao6">6</button>
+        <button id="botao7">7</button>
+        <button id="botao8">8</button>
+        <button id="botao9">9</button>
+        <button id="botao0">0</button>
+        <button id="sum">+</button>
+        <button id="sub">-</button>
+        <button id="multi">x</button>
+        <button id="div">//</button>
+        <button id="reset">C</button>
+    </div>
+
+<p id="resultado"></p>
+
+    <!-- SCRIPTTTTTTTTT -->
+    <script>
+    const valores = []
+
+let texto = document.querySelector(".texto1")
+let Input = document.querySelector("#Nbase")
+let result = document.querySelector("#resultado")
+
+let butt = document.querySelector("#botao1")
+let butt2 = document.querySelector("#botao2")
+let butt3 = document.querySelector("#botao3")
+let butt4 = document.querySelector("#botao4")
+let butt5 = document.querySelector("#botao5")
+let butt6 = document.querySelector("#botao6")
+let butt7 = document.querySelector("#botao7")
+let butt8 = document.querySelector("#botao8")
+let butt9 = document.querySelector("#botao9")
+let butt0 = document.querySelector("#botao0")
+
+let reset = document.querySelector("#reset")
+
+
+butt.addEventListener("click", () => {
+    atualizarArray()
+    return Input.value += 1
+})
+butt2.addEventListener("click", () => {
+    atualizarArray()
+    return Input.value += 2
+})
+butt3.addEventListener("click", () => {    
+    atualizarArray()
+    return Input.value += 3
+})
+butt4.addEventListener("click", () => {    
+    atualizarArray()
+    return Input.value += 4
+})
+butt5.addEventListener("click", () => {    
+    atualizarArray()
+    return Input.value += 5
+})
+butt6.addEventListener("click", () => {    
+    atualizarArray()
+    return Input.value += 6
+})
+butt7.addEventListener("click", () => {    
+    atualizarArray()
+    return Input.value += 7
+})
+butt8.addEventListener("click", () => {    
+    atualizarArray()
+    return Input.value += 8
+})
+butt9.addEventListener("click", () => {    
+    atualizarArray()
+    return Input.value += 9
+})
+butt0.addEventListener("click", () => {    
+    atualizarArray()
+    return Input.value += 0
+})
+
+// CÁLCULOS UTILIZANDO O ARRAY valores
+
+function atualizarArray() {
+texto.textContent = valores.length
+}
+
+
+
+atualizarArray()
+
+function somar(a, b) {
+return a + b
+atualizarArray()
+}
+
+function subtrair(a, b) {
+return a - b
+atualizarArray()
+}
+
+function multiplicar(a, b) {
+return a * b
+atualizarArray()
+}
+
+function dividir(a, b) {
+return a / b
+atualizarArray()
+}
+
+let plus = document.querySelector("#sum")
+let subtract = document.querySelector("#sub")
+let multipli = document.querySelector("#multi")
+let divide = document.querySelector("#div")
+
+plus.addEventListener("click", () => {
+if(Input.value.trim() !== ""){
+valores.push(parseInt(Input.value))
+Input.value = ""
+if(valores.length >= 2) {
+    result.textContent = valores.reduce(somar)
+    Input.value = ""
+    /* result.textContent = valores || "Elemento não encontrado!" */
+}
+atualizarArray()
+}
+})
+
+reset.addEventListener("click", () => {
+    valores.length = 0
+    atualizarArray()
+    result.textContent = " "
+})
+
+</script>
+</body>
+
+</html>
