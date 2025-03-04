@@ -34,16 +34,16 @@
     <p class="texto1"></p>
 
     <div class="buttons">
-        <button id="botao1">1</button>
-        <button id="botao2">2</button>
-        <button id="botao3">3</button>
-        <button id="botao4">4</button>
-        <button id="botao5">5</button>
-        <button id="botao6">6</button>
-        <button id="botao7">7</button>
-        <button id="botao8">8</button>
-        <button id="botao9">9</button>
-        <button id="botao0">0</button>
+        <button id="button">1</button>
+        <button id="button">2</button>
+        <button id="button">3</button>
+        <button id="button">4</button>
+        <button id="button">5</button>
+        <button id="button">6</button>
+        <button id="button">7</button>
+        <button id="button">8</button>
+        <button id="button">9</button>
+        <button id="button">0</button>
         <button id="sum">+</button>
         <button id="sub">-</button>
         <button id="multi">x</button>
@@ -60,68 +60,23 @@
 let texto = document.querySelector(".texto1")
 let Input = document.querySelector("#Nbase")
 let result = document.querySelector("#resultado")
-
-let butt = document.querySelector("#botao1")
-let butt2 = document.querySelector("#botao2")
-let butt3 = document.querySelector("#botao3")
-let butt4 = document.querySelector("#botao4")
-let butt5 = document.querySelector("#botao5")
-let butt6 = document.querySelector("#botao6")
-let butt7 = document.querySelector("#botao7")
-let butt8 = document.querySelector("#botao8")
-let butt9 = document.querySelector("#botao9")
-let butt0 = document.querySelector("#botao0")
-
 let reset = document.querySelector("#reset")
 
+let buttons = document.querySelector("button")
 
-butt.addEventListener("click", () => {
-    atualizarArray()
-    return Input.value += 1
-})
-butt2.addEventListener("click", () => {
-    atualizarArray()
-    return Input.value += 2
-})
-butt3.addEventListener("click", () => {    
-    atualizarArray()
-    return Input.value += 3
-})
-butt4.addEventListener("click", () => {    
-    atualizarArray()
-    return Input.value += 4
-})
-butt5.addEventListener("click", () => {    
-    atualizarArray()
-    return Input.value += 5
-})
-butt6.addEventListener("click", () => {    
-    atualizarArray()
-    return Input.value += 6
-})
-butt7.addEventListener("click", () => {    
-    atualizarArray()
-    return Input.value += 7
-})
-butt8.addEventListener("click", () => {    
-    atualizarArray()
-    return Input.value += 8
-})
-butt9.addEventListener("click", () => {    
-    atualizarArray()
-    return Input.value += 9
-})
-butt0.addEventListener("click", () => {    
-    atualizarArray()
-    return Input.value += 0
-})
+// Adiciona evento para todos os botões numéricos
+buttons.forEach(buttons => {
+    buttons.addEventListener("click", () => {
+        Input.value += buttons.textContent; // Adiciona o número clicado no input
+    });
+});
+
 
 // CÁLCULOS UTILIZANDO O ARRAY valores
 
 function atualizarArray() {
 texto.textContent = valores.length
 }
-
 
 
 atualizarArray()
@@ -164,10 +119,23 @@ atualizarArray()
 }
 })
 
+subtract.addEventListener("click", () => {
+    if(Input.value.trim() !== "") {
+        valores.push(parseInt(Input.value))
+        Input.value = ""
+        if(valores.length >= 2) {
+            result.textContent = valores.reduce(subtrair)
+            Input.value = ""
+        }
+        atualizarArray()
+    }
+})
+
 reset.addEventListener("click", () => {
     valores.length = 0
     atualizarArray()
     result.textContent = " "
+    Input.value = " "
 })
 
 </script>
