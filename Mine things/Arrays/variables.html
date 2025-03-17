@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+</head>
+<body>
+    <h1>Cart Quantity</h1>
+
+    <button id="Show">Show Quantity</button>
+    <button id="Add">Add to Cart</button>
+    <button id="Add2">+2</button>
+    <button id="Add3">+3</button>
+    <button id="Reset">Reset Cart</button>
+
+<script>
+    let cart = 5
+
+    let Showoff = document.querySelector("#Show")
+    let add = document.querySelector("#Add")
+    let add2 = document.querySelector("#Add2")
+    let add3 = document.querySelector("#Add3")
+    let reset = document.querySelector("#Reset")
+
+    Showoff.addEventListener("click", () => {
+        console.log("Cart quantity: " + cart)
+    })
+
+    add.addEventListener("click", () => {
+        cart += 1
+        console.log("Cart quantity: " + cart)
+    })
+
+    add2.addEventListener("click", () => {
+        cart += 2
+        console.log("Cart quantity: " + cart)
+    })
+
+    add3.addEventListener("click", () => {
+        cart += 3
+        console.log("Cart quantity: " + cart)
+    })
+
+    reset.addEventListener("click", () => {
+        cart = 0
+        console.log("Cart quantity: " + cart)
+    })
+</script>
+</body>
+</html>

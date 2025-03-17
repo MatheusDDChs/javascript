@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Simple</title>
+    <style>
+button {
+    border-radius: 50%;
+    border-color: transparent;
+    background-color: grey;
+    color: white;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+}
+    
+.div1 {
+    grid-column: span 3 / span 3;
+}
+
+.div2 {
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+
+.div3 {
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+.div4 {
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.div5 {
+    grid-column-start: 1;
+    grid-row-start: 3;
+}
+
+.div6 {
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+
+.div7 {
+    grid-column-start: 3;
+    grid-row-start: 3;
+}
+
+.div8 {
+    grid-column-start: 1;
+    grid-row-start: 4;
+}
+
+.div9 {
+    grid-column-start: 2;
+    grid-row-start: 4;
+}
+
+.div10 {
+    grid-column-start: 3;
+    grid-row-start: 4;
+}
+
+.div11 {
+    grid-column-start: 1;
+    grid-row-start: 5;
+}
+
+.div12 {
+    grid-column-start: 2;
+    grid-row-start: 5;
+}
+
+.div13 {
+    grid-column-start: 3;
+    grid-row-start: 5;
+}
+
+.div14 {
+    grid-column-start: 4;
+    grid-row-start: 5;
+}
+
+.div15 {
+    grid-column-start: 4;
+    grid-row-start: 4;
+}
+
+.div16 {
+    grid-column-start: 4;
+    grid-row-start: 3;
+}
+
+.div17 {
+    grid-column-start: 4;
+    grid-row-start: 2;
+}
+
+.div18 {
+    grid-column-start: 4;
+    grid-row-start: 1;
+}
+        
+        
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="div1">1</div>
+        <div class="div2"><button>2</button></div>
+        <div class="div3"><button>3</button></div>
+        <div class="div4"><button>4</button></div>
+        <div class="div5"><button>5</button></div>
+        <div class="div6"><button>6</button></div>
+        <div class="div7"><button>7</button></div>
+        <div class="div8"><button>8</button></div>
+        <div class="div9"><button>9</button></div>
+        <div class="div10"><button>0</button></div>
+        <div class="div11"><button>0</button></div>
+        <div class="div12"><button>,</button></div>
+        <div class="div13"><button><=</button></div>
+        <div class="div14"><button>=</button></div>
+        <div class="div15"><button>+</button></div>
+        <div class="div16"><button>-</button></div>
+        <div class="div17"><button>x</button></div>
+        <div class="div18"><button>/</button></div>
+    </div>
+        
+
+    
+    <script>
+resultado = document.querySelector("#result")
+botao = document.querySelector("#button")
+
+    botao.addEventListener("click"), () => {
+        resultado += botao.textcontent}
+    </script>
+</body>
+</html>
