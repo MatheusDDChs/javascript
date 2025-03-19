@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock</title>
+    <style>
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Display', 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f5f7, #d1d1d6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    color: #1d1d1f;
+}
+
+/* Título */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Container dos botões */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+button {
+    background: #ffffff;
+    color: #007aff;
+    border: 2px solid #007aff;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito hover */
+button:hover {
+    background: #007aff;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Estilização do campo de resultado */
+#Result {
+    background: #ffffff;
+    color: #1d1d1f;
+    border: 2px solid #007aff;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    min-width: 250px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #Result {
+        transition: 0.3s;
+        min-width: 80vw;
+        font-size: 0.75rem;
+    }
+    
+    button {
+        width: 100px;
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+/* Quando a tela for maior que 700px, botões ficam lado a lado */
+@media (min-width: 700px) {
+    .container {
+        flex-direction: row;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>Rock Papper Scissors with Score</h1>
+
+    <div class="container">
+        <button id="Rock">Rock</button>
+        <button id="Paper">Paper</button>
+        <button id="Scissors">Scissors</button>
+    </div>
+
+    <div class="container">
+        <button id="Start">Start</button>
+    </div>
+
+    <p id="Result">Resultado</p>
+
+    
+<script>
+    let user
+
+    let rock = document.querySelector("#Rock")
+    let paper = document.querySelector("#Paper")
+    let scissors = document.querySelector("#Scissors")
+    let start = document.querySelector("#Start")
+    let result = document.querySelector("#Result")
+
+    rock.addEventListener("click", () => {
+        user = 1
+    })
+    paper.addEventListener("click", () => {
+        user = 2
+    })
+    scissors.addEventListener("click", () => {
+        user = 3
+    })
+
+// PLACAR DO JOGO
+
+const score = {
+    wins : 0,
+    loses: 0,
+    ties: 0
+}
+
+
+
+//ALEATORIZADOR
+    let Game = [1, 2, 3];
+
+    function randomItem() {
+        let ComputerItem
+        ComputerItem = Game[Math.floor(Math.random() * Game.length)]
+        return ComputerItem
+    }
+    randomItem()
+
+    switch (randomItem()) {
+        case 1: console.log("Está é a opção 1 Rock")
+        break
+        case 2: console.log("Está é a opção 2 Paper")
+        break
+        case 3: console.log("Está é a opção 3 Scissors")
+        break
+        default: console.log("[Escolha um item]")
+    }
+
+    // VERIFICAÇÃO DO JOGO
+    start.addEventListener("click", () => {
+        // USER = ROCK AND COMPUTER = SOMETHING
+        if(user == 1 && randomItem() == 3){
+            result.textContent = "Você ganhou."
+        }
+        else if (user == 1 && randomItem() == 2){
+           result.textContent = "Você perdeu." 
+        }
+        else if(user == 1 && randomItem() == 1){
+           result.textContent = "Foi um empate."
+        }
+
+        // USER = PAPER AND COMPUTER = SOMETHING
+        else if(user == 2 && randomItem() == 1){
+           result.textContent = "Você ganhou."
+        }
+        else if(user == 2 && randomItem() == 2){
+           result.textContent = "Foi um empate."
+        }
+        else if(user == 2 && randomItem() == 3){
+           result.textContent = "Você perdeu."
+        }
+
+        // USER = SCICCORS AND COMPUTER = SOMETHING
+        else if(user == 3 && randomItem() == 1){
+           result.textContent = "Você perdeu."
+        }
+        else if(user == 3 && randomItem() == 2){
+           result.textContent = "Você ganhou."
+        }
+        else if(user == 3 && randomItem() == 3){
+           result.textContent = "Foi um empate."
+        }
+
+        else {
+            console.log("Você precisa escolher algo.")
+        }
+
+        if(result.textContent === "Você ganhou.") {
+        score.wins += 1
+    }       else if(result.textContent === "Você perdeu."){
+                score.loses += 1
+    }       else if(result.textContent === "Foi um empate."){
+                score.ties += 1
+    }
+
+    window.alert(
+`Você ganhou: ${score.wins} vezes.
+Você perdeu: ${score.loses} vezes. 
+Você empatou: ${score.ties} vezes.`)
+
+randomItem()
+    })
+
+
+</script>
+</body>
+</html>
