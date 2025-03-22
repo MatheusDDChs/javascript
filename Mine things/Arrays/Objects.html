@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    
+
+<script>
+    const product1 = {
+        name: "Shirt", 
+        "Delivery-Time": "1 day",
+        rating: {
+            stars: 4.7,
+            count: 87
+        }
+    }
+
+console.log(typeof product1)
+
+console.log(JSON.stringify(product1))
+
+const JsontString = JSON.stringify(product1)
+
+console.log(JSON.parse(JsontString)) 
+
+</script>
+</body>
+</html>

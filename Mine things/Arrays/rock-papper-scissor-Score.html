@@ -112,116 +112,114 @@ button:hover {
 
     <div class="container">
         <button id="Start">Start</button>
+        <button id="Reset">Reset Score</button>
     </div>
 
     <p id="Result">Resultado</p>
 
     
 <script>
-    let user
+let user;
 
-    let rock = document.querySelector("#Rock")
-    let paper = document.querySelector("#Paper")
-    let scissors = document.querySelector("#Scissors")
-    let start = document.querySelector("#Start")
-    let result = document.querySelector("#Result")
+let reset = document.querySelector("#Reset")
+let rock = document.querySelector("#Rock");
+let paper = document.querySelector("#Paper");
+let scissors = document.querySelector("#Scissors");
+let start = document.querySelector("#Start");
+let result = document.querySelector("#Result");
 
-    rock.addEventListener("click", () => {
-        user = 1
-    })
-    paper.addEventListener("click", () => {
-        user = 2
-    })
-    scissors.addEventListener("click", () => {
-        user = 3
-    })
+
+rock.addEventListener("click", () => {
+    user = "Rock";
+});
+paper.addEventListener("click", () => {
+    user = "Paper";
+});
+scissors.addEventListener("click", () => {
+    user = "Scissors";
+});
 
 // PLACAR DO JOGO
-
-const score = {
-    wins : 0,
-    loses: 0,
+let score = JSON.parse(localStorage.getItem("score")) || {
+    wins: 0,
+    losses: 0,
     ties: 0
+    }; 
+
+
+// ALEATORIZADOR
+let Game = ["Rock", "Paper", "Scissors"];
+
+function randomItem() {
+    return Game[Math.floor(Math.random() * Game.length)];
 }
 
+// VERIFICAÇÃO DO JOGO
+start.addEventListener("click", () => {
+    let computerChoice = randomItem(); // Define a escolha do computador para esta rodada
 
-
-//ALEATORIZADOR
-    let Game = [1, 2, 3];
-
-    function randomItem() {
-        let ComputerItem
-        ComputerItem = Game[Math.floor(Math.random() * Game.length)]
-        return ComputerItem
-    }
-    randomItem()
-
-    switch (randomItem()) {
-        case 1: console.log("Está é a opção 1 Rock")
-        break
-        case 2: console.log("Está é a opção 2 Paper")
-        break
-        case 3: console.log("Está é a opção 3 Scissors")
-        break
-        default: console.log("[Escolha um item]")
+    // USER = ROCK AND COMPUTER = SOMETHING
+    if (user === "Rock" && computerChoice === "Scissors") {
+        result.textContent = "You win.";
+    } else if (user === "Rock" && computerChoice === "Paper") {
+        result.textContent = "You loses.";
+    } else if (user === "Rock" && computerChoice === "Rock") {
+        result.textContent = "It's a Tie.";
     }
 
-    // VERIFICAÇÃO DO JOGO
-    start.addEventListener("click", () => {
-        // USER = ROCK AND COMPUTER = SOMETHING
-        if(user == 1 && randomItem() == 3){
-            result.textContent = "Você ganhou."
-        }
-        else if (user == 1 && randomItem() == 2){
-           result.textContent = "Você perdeu." 
-        }
-        else if(user == 1 && randomItem() == 1){
-           result.textContent = "Foi um empate."
-        }
-
-        // USER = PAPER AND COMPUTER = SOMETHING
-        else if(user == 2 && randomItem() == 1){
-           result.textContent = "Você ganhou."
-        }
-        else if(user == 2 && randomItem() == 2){
-           result.textContent = "Foi um empate."
-        }
-        else if(user == 2 && randomItem() == 3){
-           result.textContent = "Você perdeu."
-        }
-
-        // USER = SCICCORS AND COMPUTER = SOMETHING
-        else if(user == 3 && randomItem() == 1){
-           result.textContent = "Você perdeu."
-        }
-        else if(user == 3 && randomItem() == 2){
-           result.textContent = "Você ganhou."
-        }
-        else if(user == 3 && randomItem() == 3){
-           result.textContent = "Foi um empate."
-        }
-
-        else {
-            console.log("Você precisa escolher algo.")
-        }
-
-        if(result.textContent === "Você ganhou.") {
-        score.wins += 1
-    }       else if(result.textContent === "Você perdeu."){
-                score.loses += 1
-    }       else if(result.textContent === "Foi um empate."){
-                score.ties += 1
+    // USER = PAPER AND COMPUTER = SOMETHING
+    else if (user === "Paper" && computerChoice === "Rock") {
+        result.textContent = "You win.";
+    } else if (user === "Paper" && computerChoice === "Paper") {
+        result.textContent = "It's a Tie.";
+    } else if (user === "Paper" && computerChoice === "Scissors") {
+        result.textContent = "You loses.";
     }
 
+    // USER = SCISSORS AND COMPUTER = SOMETHING
+    else if (user === "Scissors" && computerChoice === "Rock") {
+        result.textContent = "You loses.";
+    } else if (user === "Scissors" && computerChoice === "Paper") {
+        result.textContent = "You win.";
+    } else if (user === "Scissors" && computerChoice === "Scissors") {
+        result.textContent = "It's a Tie.";
+    }
+
+    else {
+        console.log("Você precisa escolher algo.");
+        return; // Sai da função para evitar que o placar seja atualizado
+    }
+
+    // Atualiza o placar
+    if (result.textContent === "You win.") {
+        score.wins += 1;
+    } else if (result.textContent === "You loses.") {
+        score.loses += 1;
+    } else if (result.textContent === "It's a Tie.") {
+        score.ties += 1;
+    }
+
+
+// LOCAL STORAGE, VAMOS SALVAR O PLACAR DO JOGO    
+localStorage.setItem("score", JSON.stringify(score))
+
+    // Mostra o placar
     window.alert(
-`Você ganhou: ${score.wins} vezes.
-Você perdeu: ${score.loses} vezes. 
-Você empatou: ${score.ties} vezes.`)
+`You selected: ${user} and the computer choiced: ${computerChoice}
+Wins: ${score.wins}.
+Loses: ${score.loses}. 
+Ties: ${score.ties}.`
+    );
 
-randomItem()
-    })
+computerChoice = randomItem()
+console.log(computerChoice)
+})
 
-
+reset.addEventListener("click", () => {
+    score.wins = 0
+    score.loses = 0
+    score.ties = 0
+})
 </script>
 </body>
 </html>
